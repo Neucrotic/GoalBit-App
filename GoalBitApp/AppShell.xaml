@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GoalBitApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GoalBitApp"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab Title="Habits"
+             Icon="habits.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:HabitsPage}"/>
+        </Tab>
+        <Tab Title="Goals"
+             Icon="goal.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:GoalsPage}"/>
+        </Tab>
+        <Tab Title="Progress Tracker"
+             Icon="progress.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:ProgressPage}"/>
+        </Tab>
+    </TabBar>
+</Shell>
