@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GoalBitApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+46f879b94f24813003fb0a87017df33082e47976")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+f1d0bb5e3480c6e87f874ed0320abb1a47daed28")]
 [assembly: System.Reflection.AssemblyProductAttribute("GoalBitApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GoalBitApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

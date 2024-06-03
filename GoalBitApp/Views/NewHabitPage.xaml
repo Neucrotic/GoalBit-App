@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoalBitApp.Views.NewHabitPage"
+             xmlns:viewmodel="clr-namespace:GoalBitApp.ViewModel"
+             x:DataType="viewmodel:NewHabitViewModel"
+             Title="NewHabitPage">
+    
+    <VerticalStackLayout>
+        <Label Text="{Binding Habit.Name}"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+        <Label Text="{Binding Habit.Description}"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+        <Button Text="Done"
+                TextColor="{StaticResource Secondary}"
+                BackgroundColor="{StaticResource Primary}"
+                BorderColor="{StaticResource Accent}"
+                BorderWidth="2"
+                WidthRequest="160"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

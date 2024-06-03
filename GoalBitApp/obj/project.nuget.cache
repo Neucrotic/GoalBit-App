@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0xKw+VKaUj20GwyWaC1WmIIlE11/FrS8WJDLfUNNplJ4FFC+tEcN4w+3DkHP4MYP2M7CWoyFVFu/FmfZ/23aJA==",
+  "dgSpecHash": "5diVho2t7Clfz4GFeVuqisaNa2DGKR/xNJfJxfm3CQwvQd/iWducOw5luVNrdhERF8t7BB5zaP9TW1WlOloPXA==",
   "success": true,
   "projectFilePath": "C:\\_MAUI Projects\\GoalBit-App\\GoalBitApp\\GoalBitApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nelso\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\nelso\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
     "C:\\Users\\nelso\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\nelso\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

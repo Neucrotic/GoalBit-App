@@ -53,20 +53,26 @@
 	  <None Remove="Resources\Images\goal.svg" />
 	  <None Remove="Resources\Images\habits.svg" />
 	  <None Remove="Resources\Images\progress.svg" />
+	  <None Remove="Resources\Images\user.svg" />
+	  <None Remove="Resources\Images\user_dark.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="GoalsPage.xaml">
+	  <MauiXaml Update="Views\GoalsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="HabitsPage.xaml">
+	  <MauiXaml Update="Views\HabitsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ProgressPage.xaml">
+	  <MauiXaml Update="Views\NewHabitPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProgressPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

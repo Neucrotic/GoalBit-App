@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GoalBitApp.ViewModel;
+using GoalBitApp.Views;
+using Microsoft.Extensions.Logging;
 
 namespace GoalBitApp
 {
@@ -18,6 +20,17 @@ namespace GoalBitApp
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<HabitsViewModel>();
+            builder.Services.AddSingleton<GoalsViewModel>();
+            builder.Services.AddSingleton<ProgressViewModel>();
+
+            builder.Services.AddSingleton<NewHabitViewModel>();
+
+            builder.Services.AddSingleton<HabitsPage>();
+            builder.Services.AddTransient<NewHabitPage>();
+
+            builder.Services.AddSingleton<GoalsPage>();
+            builder.Services.AddSingleton<ProgressPage>();
 
             return builder.Build();
         }
