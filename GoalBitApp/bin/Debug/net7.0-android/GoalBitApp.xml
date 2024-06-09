@@ -50,11 +50,17 @@
         <member name="P:GoalBitApp.ViewModel.NewHabitViewModel.Habit">
             <inheritdoc cref="F:GoalBitApp.ViewModel.NewHabitViewModel.habit"/>
         </member>
+        <member name="P:GoalBitApp.ViewModel.NewHabitViewModel.Title">
+            <inheritdoc cref="F:GoalBitApp.ViewModel.NewHabitViewModel.title"/>
+        </member>
+        <member name="P:GoalBitApp.ViewModel.NewHabitViewModel.Visible">
+            <inheritdoc cref="F:GoalBitApp.ViewModel.NewHabitViewModel.visible"/>
+        </member>
         <member name="F:GoalBitApp.ViewModel.NewHabitViewModel.confirmHabitCommand">
             <summary>The backing field for <see cref="P:GoalBitApp.ViewModel.NewHabitViewModel.ConfirmHabitCommand"/>.</summary>
         </member>
         <member name="P:GoalBitApp.ViewModel.NewHabitViewModel.ConfirmHabitCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:GoalBitApp.ViewModel.NewHabitViewModel.ConfirmHabitAsync(GoalBitApp.Model.Habit)"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:GoalBitApp.ViewModel.NewHabitViewModel.ConfirmHabitAsync"/>.</summary>
         </member>
         <member name="T:GoalBitApp.ProgressViewModel">
             <inheritdoc/>
@@ -74,6 +80,12 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Habit">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Habit" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Visible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Visible" generated properties.</summary>
+        </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
             A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
@@ -82,6 +94,12 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Habit">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Habit" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Visible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Visible" generated properties.</summary>
         </member>
     </members>
 </doc>

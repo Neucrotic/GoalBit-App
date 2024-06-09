@@ -8,7 +8,7 @@
              x:Class="GoalBitApp.HabitsPage"
              Title="Habit Tracker"
              BackgroundColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}"
-             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}">
+             Shell.BackgroundColor="{StaticResource Accent}">
     <Shell.TitleView>
         <Grid>
             <Label Text="Habits"
@@ -17,7 +17,7 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
             <Button ImageSource="{AppThemeBinding Light=add.png, Dark=add_dark.png}"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
+                    BackgroundColor="{StaticResource Accent}"
                     HorizontalOptions="End"
                     VerticalOptions="Center"
                     CornerRadius="80"
@@ -40,8 +40,8 @@
                                        BackgroundColor="{StaticResource Accent}"
                                        CommandParameter="{Binding .}"
                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:HabitsViewModel}}, Path=EditHabitCommand}"/>
-                            <SwipeItem Text="Delete"
-                                       BackgroundColor="Red"
+                            <SwipeItem Text="Complete"
+                                       BackgroundColor="MediumBlue"
                                        CommandParameter="{Binding .}"
                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:HabitsViewModel}}, Path=DeleteHabitCommand}"/>
                         </SwipeItems>

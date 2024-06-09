@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace GoalBitApp.Model
 {
-    class AccountData
+    public sealed class AccountData
     {
-        int id;
-
         public AccountData() { }
     }
 }

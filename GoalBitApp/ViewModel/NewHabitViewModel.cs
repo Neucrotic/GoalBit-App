@@ -11,26 +11,27 @@ using System.Threading.Tasks;
 namespace GoalBitApp.ViewModel
 {
     [QueryProperty("Habit", "Habit")]
+    [QueryProperty("Title", "string")]
+    [QueryProperty("Visible", "bool")]
     public partial class NewHabitViewModel : ObservableObject
     {
         [ObservableProperty]
         Habit habit;
 
+        [ObservableProperty]
+        string title;
+
+        [ObservableProperty]
+        bool visible;
+
         public NewHabitViewModel() { }
 
         [RelayCommand]
-        async Task ConfirmHabitAsync(Habit _habit)
+        async Task ConfirmHabitAsync()
         {
             try
             {
-                if (_habit.Name == "___")
-                {
-                    //do not update habit data, just pop page
-                }
-                else
-                {
-                    //send habit to HabitsPage
-                }
+                // Pop the Stack: await Shell.Current.Pop;
             }
             catch (Exception ex)
             {

@@ -6,7 +6,7 @@
              x:Class="GoalBitApp.GoalsPage"
              Title="Longterm Goals"
              BackgroundColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}"
-             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}">
+             Shell.BackgroundColor="{StaticResource Accent}">
     <Shell.TitleView>
         <Grid>
             <Label Text="Goals"
@@ -15,7 +15,7 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
             <Button ImageSource="{AppThemeBinding Light=add.png, Dark=add_dark.png}"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
+                    BackgroundColor="{StaticResource Accent}}"
                     HorizontalOptions="End"
                     VerticalOptions="Center"
                     CornerRadius="80"

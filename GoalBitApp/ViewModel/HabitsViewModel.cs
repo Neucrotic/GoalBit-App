@@ -44,7 +44,9 @@ namespace GoalBitApp
 
                 await Shell.Current.GoToAsync($"{nameof(NewHabitPage)}", true, new Dictionary<string, object>
                                                                                 {
-                                                                                    { "Habit", _habit }
+                                                                                    { "Habit", _habit },
+                                                                                    { "string",  "New Habit"},
+                                                                                    { "bool", false}
                                                                                 });
             }
             catch (Exception ex)
@@ -62,7 +64,9 @@ namespace GoalBitApp
 
             await Shell.Current.GoToAsync($"{nameof(NewHabitPage)}", true, new Dictionary<string, object>
                                                                                 {
-                                                                                    { "Habit", _habit }
+                                                                                    { "Habit", _habit },
+                                                                                    { "string",  "Edit Habit"},
+                                                                                    { "bool", true}
                                                                                 });
         }
 
