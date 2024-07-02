@@ -15,20 +15,24 @@
     </Shell.TitleView>
 
     <VerticalStackLayout Padding="0, 120, 0, 0">
-        <Label Text="{Binding Habit.Name}"
+        <Entry Placeholder="{Binding Habit.Name}"
+               ClearButtonVisibility="WhileEditing"
+               PlaceholderColor="Black"
                FontSize="32"
                TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
-               Padding="4"
                VerticalOptions="Center" 
                HorizontalOptions="Center"
                Margin="0, 20, 0, 0"/>
         
-        <Label Text="{Binding Habit.Description}"
+        <Entry Placeholder="{Binding Habit.Description}"
+               ClearButtonVisibility="WhileEditing"
+               PlaceholderColor="Black"
                FontSize="20"
                TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
                VerticalOptions="Center" 
                HorizontalOptions="Center"
-               Margin="10, 20, 10, 30"/>
+               Margin="10, 20, 10, 30"
+               />
         
         <Button Text="Done"
                 TextColor="{StaticResource Secondary}"

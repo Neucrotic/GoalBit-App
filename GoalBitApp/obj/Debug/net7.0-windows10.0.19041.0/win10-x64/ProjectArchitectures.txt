@@ -1,0 +1,1 @@
+C:\_MAUI Projects\GoalBit-App\GoalBitApp\GoalBitApp.csproj;x64

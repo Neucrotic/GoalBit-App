@@ -9,6 +9,9 @@ namespace GoalBitApp
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(NewHabitPage), typeof(NewHabitPage));
+            Routing.RegisterRoute(nameof(NewGoalPage), typeof(NewGoalPage));
+            Routing.RegisterRoute(nameof(DisplayGoalPage), typeof(DisplayGoalPage));
+            // estimating 21 routes total, this does not include going 'back' on android
         }
     }
 }

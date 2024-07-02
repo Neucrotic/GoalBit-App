@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GoalBitApp"
+             xmlns:viewmodel="clr-namespace:GoalBitApp.ViewModel"
+             xmlns:model="clr-namespace:GoalBitApp.Model"
+             x:DataType="viewmodel:AccountViewModel"
+             x:Class="GoalBitApp.Views.AccountPage"
+             Title="{Binding Title}"
+             Shell.BackgroundColor="{StaticResource Accent}">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

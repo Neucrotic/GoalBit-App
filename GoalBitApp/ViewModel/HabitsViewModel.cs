@@ -26,6 +26,8 @@ namespace GoalBitApp
             Habits.Add(habit1);
             Habits.Add(habit2);
             Habits.Add(habit3);
+
+            CheckTimeForHabitListRefresh();
         }
 
         [RelayCommand]
@@ -59,15 +61,23 @@ namespace GoalBitApp
         [RelayCommand]
         async Task EditHabitAsync(Habit _habit)
         {
-            if (_habit is null)
-                return;
+            try
+            {
+                if (_habit is null)
+                    return;
 
-            await Shell.Current.GoToAsync($"{nameof(NewHabitPage)}", true, new Dictionary<string, object>
+                await Shell.Current.GoToAsync($"{nameof(NewHabitPage)}", true, new Dictionary<string, object>
                                                                                 {
                                                                                     { "Habit", _habit },
                                                                                     { "string",  "Edit Habit"},
                                                                                     { "bool", true}
                                                                                 });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"{ex.Message}");
+                await Shell.Current.DisplayAlert("Habits Error: Swipe", $"Edit Habit Failed", "OK");
+            }
         }
 
         [RelayCommand]
@@ -85,11 +95,12 @@ namespace GoalBitApp
         }
 
         [RelayCommand]
-        async Task ConfrimHabitAsync(Habit _habit)
+        async Task ConfirmHabitAsync(Habit _habit)
         {
+            bool answer = false;
             try
             {
-                await Shell.Current.DisplayPromptAsync("Confirm?", "Have you maintained this habit today?", "Yes", "No");
+                 answer = await Shell.Current.DisplayAlert("Confirm?", "Have you maintained this habit today?", "Yes", "No");
             }
             catch (Exception ex)
             {
@@ -98,14 +109,32 @@ namespace GoalBitApp
             }
             finally
             {
-                ConfirmedHabits.Add(_habit);
-                Habits.Remove( _habit);
+                if (answer)
+                {
+                    UserCompletedHabit(_habit);
+                }
             }
         }
 
-        void AddHabit(Habit _habit)
+        void UserCompletedHabit(Habit _habit)
         {
-            Habits.Add(_habit);
+            ConfirmedHabits.Add(_habit);
+            Habits.Remove(_habit);
+        }
+
+        void CheckTimeForHabitListRefresh()
+        {
+
+        }
+
+        void RefreshHabitLists()
+        {
+            foreach (var h in ConfirmedHabits)
+            {
+                Habits.Add(h);
+            }
+
+            ConfirmedHabits.Clear();
         }
     }
 }

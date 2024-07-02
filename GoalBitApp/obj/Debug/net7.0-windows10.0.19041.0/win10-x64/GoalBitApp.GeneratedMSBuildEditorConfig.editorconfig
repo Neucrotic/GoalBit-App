@@ -36,6 +36,24 @@ build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Resources.Style
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/AccountLoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.AccountLoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AccountLoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AccountLoginPage.xaml
+
+[C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/AccountPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.AccountPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AccountPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AccountPage.xaml
+
+[C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/DisplayGoalPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.DisplayGoalPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\DisplayGoalPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\DisplayGoalPage.xaml
+
 [C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/GoalsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.GoalsPage.xaml
@@ -48,6 +66,24 @@ build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.HabitsPag
 build_metadata.AdditionalFiles.TargetPath = Views\HabitsPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\HabitsPage.xaml
 
+[C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/LinkGoalToHabitsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.LinkGoalToHabitsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LinkGoalToHabitsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LinkGoalToHabitsPage.xaml
+
+[C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/LinkHabitToGoalsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.LinkHabitToGoalsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\LinkHabitToGoalsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\LinkHabitToGoalsPage.xaml
+
+[C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/NewGoalPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.NewGoalPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\NewGoalPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\NewGoalPage.xaml
+
 [C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/NewHabitPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.NewHabitPage.xaml
@@ -59,3 +95,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.ProgressPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\ProgressPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\ProgressPage.xaml
+
+[C:/_MAUI Projects/GoalBit-App/GoalBitApp/Views/SettingsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = GoalBitApp.Views.SettingsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SettingsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SettingsPage.xaml

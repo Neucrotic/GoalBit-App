@@ -20,15 +20,5 @@ namespace GoalBitApp.Model
             Description = _description;
             Streak = 0;
         }
-
-        public void EditName(string _name)
-        {
-            Name = _name;
-        }
-
-        public void EditDescription(string _description)
-        {
-            Description = _description;
-        }
     }
 }

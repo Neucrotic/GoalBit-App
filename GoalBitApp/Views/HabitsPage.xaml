@@ -36,14 +36,14 @@
                 <SwipeView>
                     <SwipeView.RightItems>
                         <SwipeItems>
-                            <SwipeItem Text="Edit"
+                            <SwipeItem Text="Done"
                                        BackgroundColor="{StaticResource Accent}"
                                        CommandParameter="{Binding .}"
-                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:HabitsViewModel}}, Path=EditHabitCommand}"/>
-                            <SwipeItem Text="Complete"
+                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:HabitsViewModel}}, Path=ConfirmHabitCommand}"/>
+                            <SwipeItem Text="Edit"
                                        BackgroundColor="MediumBlue"
                                        CommandParameter="{Binding .}"
-                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:HabitsViewModel}}, Path=DeleteHabitCommand}"/>
+                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:HabitsViewModel}}, Path=EditHabitCommand}"/>
                         </SwipeItems>
                     </SwipeView.RightItems>
                     <Grid Padding="4">
