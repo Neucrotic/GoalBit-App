@@ -50,6 +50,7 @@
         <member name="T:GoalBitApp.ViewModel.NewHabitViewModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:GoalBitApp.ViewModel.NewHabitViewModel.Habit">
             <inheritdoc cref="F:GoalBitApp.ViewModel.NewHabitViewModel.habit"/>
@@ -65,6 +66,12 @@
         </member>
         <member name="P:GoalBitApp.ViewModel.NewHabitViewModel.ConfirmHabitCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:GoalBitApp.ViewModel.NewHabitViewModel.ConfirmHabitAsync"/>.</summary>
+        </member>
+        <member name="F:GoalBitApp.ViewModel.NewHabitViewModel.setHabitNullCommand">
+            <summary>The backing field for <see cref="P:GoalBitApp.ViewModel.NewHabitViewModel.SetHabitNullCommand"/>.</summary>
+        </member>
+        <member name="P:GoalBitApp.ViewModel.NewHabitViewModel.SetHabitNullCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:GoalBitApp.ViewModel.NewHabitViewModel.SetHabitNullAsync"/>.</summary>
         </member>
         <member name="T:GoalBitApp.ViewModel.SettingsViewModel">
             <inheritdoc/>

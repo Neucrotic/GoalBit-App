@@ -53,6 +53,7 @@
                 VerticalOptions="End" 
                 HorizontalOptions="Center"
                 Margin="0, 120, 0, 0"
-                IsVisible="{Binding Visible}"/> 
+                IsVisible="{Binding Visible}"
+                Command="{Binding SetHabitNullCommand}"/> 
     </VerticalStackLayout>
 </ContentPage>

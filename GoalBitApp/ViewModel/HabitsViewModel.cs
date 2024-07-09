@@ -27,7 +27,8 @@ namespace GoalBitApp
             Habits.Add(habit2);
             Habits.Add(habit3);
 
-            CheckTimeForHabitListRefresh();
+            CheckForNullHabits();
+            CheckTimeForHabitListRefresh();   
         }
 
         [RelayCommand]
@@ -120,6 +121,15 @@ namespace GoalBitApp
         {
             ConfirmedHabits.Add(_habit);
             Habits.Remove(_habit);
+        }
+
+        void CheckForNullHabits()
+        {
+            foreach (var h in Habits)
+            {
+                if (h.Name == "null")
+                    Habits.Remove(h);
+            }
         }
 
         void CheckTimeForHabitListRefresh()

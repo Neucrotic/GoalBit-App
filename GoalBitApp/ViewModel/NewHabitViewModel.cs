@@ -39,5 +39,24 @@ namespace GoalBitApp.ViewModel
                 await Shell.Current.DisplayAlert("Habits Error: New Habit", $"Error editing or creating a habit.", "OK");
             }
         }
+
+        [RelayCommand]
+        async Task SetHabitNullAsync()
+        {
+            try
+            {
+                Habit.Name = "null";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Habits Error: Delete Habit", $"Error deleting a habit.", "OK");
+
+            }
+            finally
+            {
+                await Shell.Current.GoToAsync($"{nameof(HabitsPage)}", true);
+            }
+        }
     }
 }
