@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppGoalBit.Views.NewHabitPage"
+             xmlns:viewmodel="clr-namespace:AppGoalBit.ViewModel"
+             x:DataType="viewmodel:NewHabitViewModel"
+                      Shell.BackgroundColor="{StaticResource Accent}">
+    <Shell.TitleView>
+        <Label Text="{Binding Title}"
+                   TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
+                   FontSize="24"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Margin="0, 0, 70, 0"/>
+    </Shell.TitleView>
+    <VerticalStackLayout Padding="0, 120, 0, 0">
+        <Entry Placeholder="{Binding Habit.Name}"
+               ClearButtonVisibility="WhileEditing"
+               PlaceholderColor="Black"
+               FontSize="32"
+               TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               Margin="0, 20, 0, 0"/>
+
+        <Entry Placeholder="{Binding Habit.Description}"
+               ClearButtonVisibility="WhileEditing"
+               PlaceholderColor="Black"
+               FontSize="20"
+               TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               Margin="10, 20, 10, 30"
+               />
+
+        <Button Text="Done"
+                TextColor="{StaticResource Secondary}"
+                BackgroundColor="{StaticResource Primary}"
+                BorderColor="{StaticResource Accent}"
+                BorderWidth="2"
+                WidthRequest="160"
+                VerticalOptions="End" 
+                HorizontalOptions="Center"
+                Command="{Binding ConfirmHabitCommand}"/>
+
+        <Button Text="Delete"
+                TextColor="{StaticResource Secondary}"
+                BackgroundColor="{StaticResource Primary}"
+                BorderColor="Red"
+                BorderWidth="2"
+                WidthRequest="160"
+                VerticalOptions="End" 
+                HorizontalOptions="Center"
+                Margin="0, 120, 0, 0"
+                IsVisible="{Binding Visible}"
+                Command="{Binding SetHabitNullCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AppGoalBit.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AppGoalBit"
+    xmlns:views="clr-namespace:AppGoalBit.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"
+    Shell.TabBarTitleColor="{StaticResource Accent}"
+    Shell.TabBarUnselectedColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}">
+
+    <TabBar>
+        <Tab Title="Habits"
+         Icon="habits.png">
+            <ShellContent ContentTemplate="{DataTemplate views:HabitsPage}"/>
+        </Tab>
+        <Tab Title="Goals"
+         Icon="goal.png">
+            <ShellContent ContentTemplate="{DataTemplate views:GoalsPage}"/>
+        </Tab>
+        <Tab Title="Progress"
+         Icon="progress.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ProgressPage}"/>
+        </Tab>
+    </TabBar>
+
+</Shell>
