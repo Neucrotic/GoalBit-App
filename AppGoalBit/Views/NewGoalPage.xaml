@@ -6,7 +6,7 @@
              x:DataType="viewmodel:NewGoalViewModel"
              Shell.BackgroundColor="{StaticResource Accent}">
     <Shell.TitleView>
-        <Label Text="{Binding Title}"
+        <Label Text="New Goal"
                TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
                FontSize="24"
                VerticalOptions="Center"
@@ -23,9 +23,12 @@
                ClearButtonVisibility="WhileEditing"/>
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button Text="Create"
-                    HorizontalOptions="Center"/>
+                    HorizontalOptions="Center"
+                    Command="{Binding NewGoalDoneCommand}"
+                    />
             <Button Text="Cancel"
-                    HorizontalOptions="Center"/>
+                    HorizontalOptions="Center"
+                    Command="{Binding CancelGoalCommand}"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

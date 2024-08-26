@@ -1,4 +1,5 @@
-﻿using AppGoalBit.Data;
+﻿using AndroidX.Core.Util;
+using AppGoalBit.Data;
 using AppGoalBit.Model;
 using AppGoalBit.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -22,33 +23,23 @@ namespace AppGoalBit.ViewModel
         public HabitsViewModel(GBDatabase _database)
         {
             Database = _database;
-
-            Habit habit1 = new();
-            habit1.Name = "Read";
-            habit1.Description = "Read at least 1 chapter of any book.";
-            Habit habit2 = new();
-            habit2.Name = "Write";
-            habit2.Description = "Write until the word count goal has been reached.";
-            Habit habit3 = new();
-            habit3.Name = "Code";
-            habit3.Description = "Work on a feature of the current app you are developing.";
-
-            Habits.Add(habit1);
-            Habits.Add(habit2);
-            Habits.Add(habit3);
-
-            CheckForNullHabits();
-            CheckTimeForHabitListRefresh();
         }
 
         [RelayCommand]
-        void Appearing()
+        async Task Appearing()
         {
             try
             {
-
-                // DoSomething
-
+                // Do database CRUD
+                var habits = await Database.GetHabitListAsync();
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Habits.Clear();
+                    foreach (var g in habits)
+                    {
+                        Habits.Add(g);
+                    }
+                });
             }
             catch (Exception ex)
             {
@@ -57,12 +48,15 @@ namespace AppGoalBit.ViewModel
         }
 
         [RelayCommand]
-        void Disappearing()
+        async Task Disappearing()
         {
             try
             {
-
-                // DoSomething
+                // Do database CRUD
+                foreach (var h in Habits)
+                {
+                    await Database.SaveHabitAsync(h);
+                }
 
             }
             catch (Exception ex)
@@ -124,26 +118,18 @@ namespace AppGoalBit.ViewModel
         }
 
         [RelayCommand]
-        async Task DeleteHabitAsync(Habit _habit)
-        {
-            try
-            {
-                Habits.Remove(_habit);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"{ex.Message}");
-                await Shell.Current.DisplayAlert("Habits Error: Swipe", $"Delete Habit Failed", "OK");
-            }
-        }
-
-        [RelayCommand]
         async Task ConfirmHabitAsync(Habit _habit)
         {
             bool answer = false;
             try
             {
                 answer = await Shell.Current.DisplayAlert("Confirm?", "Have you maintained this habit today?", "Yes", "No");
+                if (answer)
+                {
+                    // Do database CRUD
+                    _habit.Done = true;
+                    await Database.SaveHabitAsync(_habit);
+                }
             }
             catch (Exception ex)
             {
@@ -152,41 +138,13 @@ namespace AppGoalBit.ViewModel
             }
             finally
             {
+                // Do local update after database CRUD successful
                 if (answer)
                 {
-                    UserCompletedHabit(_habit);
+                    Habits.Remove(_habit);
                 }
-            }
-        }
-
-        void UserCompletedHabit(Habit _habit)
-        {
-            ConfirmedHabits.Add(_habit);
-            Habits.Remove(_habit);
-        }
-
-        void CheckForNullHabits()
-        {
-            foreach (var h in Habits)
-            {
-                if (h.Name == "null")
-                    Habits.Remove(h);
-            }
-        }
-
-        void CheckTimeForHabitListRefresh()
-        {
                 
-        }
-
-        void RefreshHabitLists()
-        {
-            foreach (var h in ConfirmedHabits)
-            {
-                Habits.Add(h);
             }
-
-            ConfirmedHabits.Clear();
         }
     }
 }

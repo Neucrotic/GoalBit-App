@@ -1,12 +1,83 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="AppGoalBit.Views.DisplayGoalPage"
-             Title="DisplayGoalPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:model="clr-namespace:AppGoalBit.Model"
+             xmlns:viewmodel="clr-namespace:AppGoalBit.ViewModel"
+             x:DataType="viewmodel:DisplayGoalViewModel"
+             Shell.BackgroundColor="{StaticResource Accent}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}">
+    <Shell.TitleView>
+        <Label Text="{Binding Title}"
+               TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
+               FontSize="24"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Margin="0, 0, 70, 0"/>
+    </Shell.TitleView>
+    
+    <ContentPage.Behaviors>
+        <mct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+
+    <Frame Margin="12">
+        <Grid BindableLayout.ItemsSource="{Binding Goal}"
+                  Padding="0"
+                  ColumnDefinitions="40, *"
+                  RowDefinitions="50, *">
+            <Image Source="{AppThemeBinding Light=goal.png, Dark=goal.png}"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+
+            <Label Text="{Binding Goal.Name}"
+                   FontSize="16"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Margin="4"
+                   FontAttributes="Bold"/>
+
+            <VerticalStackLayout Grid.Column="1"
+                                 Grid.Row="1">
+                <Label Text="{Binding Goal.Description}"
+                       Margin="4"/>
+
+                <ProgressBar Progress="{Binding Goal.ProgressPercentage}"
+                             ProgressColor="Red"
+                             Margin="0"/>
+
+                <CollectionView Margin="4"
+                                ItemsSource="{Binding Habits}"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Habit">
+                            <Grid Padding="4">
+                                <Frame HeightRequest="75"
+                                       Padding="0">
+                                    <Grid Padding="0"
+                                          ColumnDefinitions="50, *">
+                                        <Image Aspect="AspectFill"
+                                               Source="{AppThemeBinding Light=habits.png, Dark=habits.png}"
+                                               WidthRequest="50"
+                                               HeightRequest="50"/>
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Padding="10"
+                                                             VerticalOptions="Center">
+                                            <Label Text="{Binding Name}"
+                                                   TextColor="Black"
+                                                   TextTransform="Uppercase"
+                                                   FontAttributes="Bold"/>
+                                            <Label Text="{Binding Description}"
+                                                   TextColor="Black"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Grid>
+    </Frame>
 </ContentPage>

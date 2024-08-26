@@ -28,6 +28,7 @@
                     Command="{Binding AddHabitCommand}"/>
         </Grid>
     </Shell.TitleView>
+    
     <ContentPage.Behaviors>
         <mct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
         <mct:EventToCommandBehavior Command="{Binding DisappearingCommand}" EventName="Disappearing" />

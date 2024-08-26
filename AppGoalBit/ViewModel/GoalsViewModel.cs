@@ -22,47 +22,48 @@ namespace AppGoalBit.ViewModel
         public GoalsViewModel(GBDatabase _database)
         {
             Database = _database;
-            Goal goal1 = new();
-            goal1.Name = "Financial Freedom Through Coding Apps";
-            goal1.Description = "I want to use my coding skills to build apps which I can market and monotize in order to quit my day job and mak art full time.";
-            Goal goal2 = new();
-            goal2.Name = "Write a Book";
-            goal2.Description = "By incrementally working through each section of a story, I want to finnaly write a work of fiction in the novel format. Even if it is never published is it an important first step.";
-
-            Goals.Add(goal1);
-            Goals.Add(goal2);
         }
 
         [RelayCommand]
         async Task Appearing()
         {
+            // Load from Database here
             try
             {
+                // Do database CRUD
                 var goals = await Database.GetGoalListAsync();
-                Goals.Clear();
-                foreach (var g in goals)
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    Goals.Add(g);
-                }
+                    Goals.Clear();
+                    foreach (var g in goals)
+                    {
+                        Goals.Add(g);
+                    }
+                });   
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
+                await Shell.Current.DisplayAlert("Database Error", $"Error with OnAppear Goals ViewModel", "OK");
             }
         }
 
         [RelayCommand]
         async Task Disappearing()
         {
+            // Save to Database here
             try
             {
-                // DoSomething
-                var goal = await Database.GetGoalAsync(1);
-
+                // Do database CRUD
+                foreach (var g in Goals)
+                {
+                    await Database.SaveGoalAsync(g);
+                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
+                await Shell.Current.DisplayAlert("Database Error", $"Error with OnDisappear Goals ViewModel", "OK");
             }
         }
 
@@ -71,24 +72,25 @@ namespace AppGoalBit.ViewModel
         {
             try
             {
-                await Shell.Current.GoToAsync($"{nameof(NewGoalPage)}", true, new Dictionary<string, object>
-                                                                                {
-                                                                                    { "string",  "New Goal"}
-                                                                                });
+                await Shell.Current.GoToAsync($"{nameof(NewGoalPage)}", true);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Goals Error: Button", $"Add habit button failed.", "OK");
+                await Shell.Current.DisplayAlert("Goals Error: Button", $"Add goal button failed.", "OK");
             }
         }
 
         [RelayCommand]
-        async Task GoalTappedAsync()
+        async Task GoalTappedAsync(Goal _goal)
         {
             try
             {
-                await Shell.Current.GoToAsync($"{nameof(DisplayGoalPage)}", true);
+                // Add goal data to be sent to display page
+                await Shell.Current.GoToAsync($"{nameof(DisplayGoalPage)}", true, new Dictionary<string, object>
+                                                                                {
+                                                                                    {"Goal", _goal }
+                                                                                });
             }
             catch (Exception ex)
             {

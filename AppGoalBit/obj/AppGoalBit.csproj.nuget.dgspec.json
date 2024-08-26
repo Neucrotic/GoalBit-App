@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_MAUI Projects\\AppGoalBit\\AppGoalBit\\AppGoalBit.csproj": {}
+    "C:\\_MAUI Projects\\GoalBit-App\\AppGoalBit\\AppGoalBit.csproj": {}
   },
   "projects": {
-    "C:\\_MAUI Projects\\AppGoalBit\\AppGoalBit\\AppGoalBit.csproj": {
+    "C:\\_MAUI Projects\\GoalBit-App\\AppGoalBit\\AppGoalBit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_MAUI Projects\\AppGoalBit\\AppGoalBit\\AppGoalBit.csproj",
+        "projectUniqueName": "C:\\_MAUI Projects\\GoalBit-App\\AppGoalBit\\AppGoalBit.csproj",
         "projectName": "AppGoalBit",
-        "projectPath": "C:\\_MAUI Projects\\AppGoalBit\\AppGoalBit\\AppGoalBit.csproj",
+        "projectPath": "C:\\_MAUI Projects\\GoalBit-App\\AppGoalBit\\AppGoalBit.csproj",
         "packagesPath": "C:\\Users\\nelso\\.nuget\\packages\\",
-        "outputPath": "C:\\_MAUI Projects\\AppGoalBit\\AppGoalBit\\obj\\",
+        "outputPath": "C:\\_MAUI Projects\\GoalBit-App\\AppGoalBit\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

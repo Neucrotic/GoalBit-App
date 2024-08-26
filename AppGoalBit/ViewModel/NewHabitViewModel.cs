@@ -1,4 +1,5 @@
-﻿using AppGoalBit.Model;
+﻿using AppGoalBit.Data;
+using AppGoalBit.Model;
 using AppGoalBit.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -13,7 +14,7 @@ namespace AppGoalBit.ViewModel
 {
     [QueryProperty("Habit", "Habit")]
     [QueryProperty("Title", "string")]
-    [QueryProperty("Visible", "bool")]
+    [QueryProperty("IsDeleteVisible", "bool")]
     public partial class NewHabitViewModel : ObservableObject
     {
         [ObservableProperty]
@@ -23,30 +24,69 @@ namespace AppGoalBit.ViewModel
         string title;
 
         [ObservableProperty]
-        bool visible;
+        bool isDeleteVisible;
 
-        public NewHabitViewModel() { }
+        GBDatabase Database;
+
+        public NewHabitViewModel(GBDatabase _database)
+        {
+            Database = _database;
+        }
+
+        [RelayCommand]
+        async Task UpdateNameAsync()
+        {
+            try
+            {
+                //Habit.Name = _e.Text;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Habits Error: Update Habit", $"Error updated habit name.", "OK");
+            }
+        }
+
+        [RelayCommand]
+        async Task UpdateDescriptionAsync(string _desc)
+        {
+            try
+            {
+                Habit.Description = _desc;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Habits Error: Update Habit", $"Error updated habit name.", "OK");
+            }
+        }
 
         [RelayCommand]
         async Task ConfirmHabitAsync()
         {
             try
             {
-                // Pop the Stack: await Shell.Current.Pop;
+                // Do database CRUD
+                await Database.SaveHabitAsync(Habit);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.DisplayAlert("Habits Error: New Habit", $"Error editing or creating a habit.", "OK");
             }
+            finally
+            {
+                await Shell.Current.GoToAsync("..");
+            }
         }
 
         [RelayCommand]
-        async Task SetHabitNullAsync()
+        async Task DeleteHabitAsync()
         {
             try
             {
-                Habit.Name = "null";
+                // Do database CRUD
+                await Database.DeleteHabitAsync(Habit);
             }
             catch (Exception ex)
             {
@@ -56,7 +96,7 @@ namespace AppGoalBit.ViewModel
             }
             finally
             {
-                await Shell.Current.GoToAsync($"{nameof(HabitsPage)}", true);
+                await Shell.Current.GoToAsync("..");
             }
         }
     }

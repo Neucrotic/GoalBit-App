@@ -1,4 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AppGoalBit.Data;
+using AppGoalBit.Model;
+using AppGoalBit.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -9,26 +12,43 @@ using System.Threading.Tasks;
 
 namespace AppGoalBit.ViewModel
 {
-    [QueryProperty("Title", "string")]
     public partial class NewGoalViewModel : ObservableObject
     {
-        [ObservableProperty]
-        public string title;
+        Goal G = new();
 
-        public NewGoalViewModel() { }
+        GBDatabase Database;
+
+        public NewGoalViewModel(GBDatabase _database)
+        {
+            Database = _database;
+        }
 
         [RelayCommand]
-        async Task NewGoalDoneAsync()
+        async Task NewGoalDoneAsync(Entry _e)
         {
             try
             {
-                //save this goal using datbase service.
+                // Do Database CRUD
+                G.Name = "Test";
+                G.Description = "a simple test.";
+                await Database.SaveGoalAsync(G);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.DisplayAlert("New Goal Error: Button", $"Complete goal button failed.", "OK");
             }
+            finally
+            {
+                // Can pop page from stack because the Database has already stored the changes this page has made (still to do above).
+                await Shell.Current.GoToAsync("..");
+            }
+        }
+
+        [RelayCommand]
+        async Task CancelGoalAsync()
+        {
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

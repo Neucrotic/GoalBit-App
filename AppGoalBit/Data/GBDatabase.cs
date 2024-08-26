@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AndroidX.Core.Util;
 using AppGoalBit.Model;
 using SQLite;
 
@@ -12,7 +15,10 @@ namespace AppGoalBit.Data
     {
         SQLiteAsyncConnection Database;
 
-        public GBDatabase() { }
+        public GBDatabase()
+        {
+            List<int> ints = new();
+        }
 
         async Task Init()
         {
@@ -52,14 +58,16 @@ namespace AppGoalBit.Data
         public async Task<int> SaveGoalAsync(Goal _goal)
         {
             await Init();
-            if (_goal.ID != 0)
+
+            // Check if Goal exists. Update or Insert
+            if (GetGoalAsync(_goal.ID) is not null)
             {
                 return await Database.UpdateAsync(_goal);
             }
             else
             {
                 return await Database.InsertAsync(_goal);
-            }
+            }   
         }
 
         public async Task<int> SaveHabitAsync(Habit _habit)

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vn1tGIVZg7+tSWJf3LxN0Yr5epznKkMrILrAnmewd3p8SaYxDBcKDKcKZia4PmNNupgf44TytFSJubH4d1scYQ==",
+  "dgSpecHash": "qCV0BgcFYooCPqC6g3VBy28kXGbIRjN9OZgpRszYaeAUe7zwut5oDJo30vzzbcMASABbPqQfIdY1o0i4YGDZGg==",
   "success": true,
-  "projectFilePath": "C:\\_MAUI Projects\\AppGoalBit\\AppGoalBit\\AppGoalBit.csproj",
+  "projectFilePath": "C:\\_MAUI Projects\\GoalBit-App\\AppGoalBit\\AppGoalBit.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nelso\\.nuget\\packages\\communitytoolkit.maui\\9.0.3\\communitytoolkit.maui.9.0.3.nupkg.sha512",
     "C:\\Users\\nelso\\.nuget\\packages\\communitytoolkit.maui.core\\9.0.3\\communitytoolkit.maui.core.9.0.3.nupkg.sha512",
