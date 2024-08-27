@@ -16,7 +16,8 @@
                    Margin="0, 0, 70, 0"/>
     </Shell.TitleView>
     <VerticalStackLayout Padding="0, 120, 0, 0">
-        <Entry Placeholder="{Binding Habit.Name}"
+        <Entry Placeholder="Name"
+               Text="{Binding Habit.Name}"
                ClearButtonVisibility="WhileEditing"
                PlaceholderColor="Black"
                FontSize="32"
@@ -26,20 +27,24 @@
                Margin="0, 20, 0, 0">
             <Entry.Behaviors>
                 <toolkit:EventToCommandBehavior EventName="Completed"
-                                                Command="{Binding UpdateNameCommand}"/>
+                                                Command="{Binding ValidateHabitNameCommand}"/>
             </Entry.Behaviors>
         </Entry>
 
-        <Entry Placeholder="{Binding Habit.Description}"
+        <Entry Placeholder="Description"
+               Text="{Binding Habit.Description}"
                ClearButtonVisibility="WhileEditing"
                PlaceholderColor="Black"
                FontSize="20"
                TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
                VerticalOptions="Center" 
                HorizontalOptions="Center"
-               Margin="10, 20, 10, 30"
-               ReturnCommand="{Binding UpdateDescriptionCommand}"
-               ReturnCommandParameter="{Binding .}"/>
+               Margin="10, 20, 10, 30">
+            <Entry.Behaviors>
+                <toolkit:EventToCommandBehavior EventName="Completed"
+                                    Command="{Binding ValidateHabitDescriptionCommand}"/>
+            </Entry.Behaviors>
+        </Entry>
 
         <Button Text="Done"
                 TextColor="{StaticResource Secondary}"

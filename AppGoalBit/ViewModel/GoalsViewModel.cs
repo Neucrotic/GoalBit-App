@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AppGoalBit.Data;
 using AppGoalBit.Model;
 using AppGoalBit.Views;
@@ -72,7 +67,15 @@ namespace AppGoalBit.ViewModel
         {
             try
             {
-                await Shell.Current.GoToAsync($"{nameof(NewGoalPage)}", true);
+
+                Goal goal = new();
+                goal.Name = "";
+                goal.Description = "";
+                goal.ProgressPercentage = 0;
+                await Shell.Current.GoToAsync($"{nameof(NewGoalPage)}", true, new Dictionary<string, object>
+                {
+                                                                                    {"Goal", goal }
+                                                                                });
             }
             catch (Exception ex)
             {

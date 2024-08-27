@@ -17,6 +17,9 @@
     <MauiXaml Update="Views\HabitsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\LinkHabitsPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\NewGoalPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

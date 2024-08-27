@@ -58,10 +58,12 @@
                                        FontSize="14"
                                        FontAttributes="Bold"
                                        HorizontalTextAlignment="Center"
-                                       Margin="0, 0, 0, 16"/>
+                                       Margin="0, 0, 0, 6"/>
                                 <Label Text="{Binding Description}"
                                        FontSize="10"
-                                       TextColor="Black"/>
+                                       TextColor="Black"
+                                       HeightRequest="55"
+                                       LineBreakMode="WordWrap"/>
                                 <VerticalStackLayout Padding="0, 6, 0, 6"
                                                      VerticalOptions="End">
                                     <ProgressBar Progress="{Binding ProgressPercentage}"

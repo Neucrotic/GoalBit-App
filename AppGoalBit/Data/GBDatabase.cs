@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AndroidX.Core.Util;
 using AppGoalBit.Model;
 using SQLite;
 
@@ -60,7 +59,7 @@ namespace AppGoalBit.Data
             await Init();
 
             // Check if Goal exists. Update or Insert
-            if (GetGoalAsync(_goal.ID) is not null)
+            if (_goal.ID != 0)
             {
                 return await Database.UpdateAsync(_goal);
             }

@@ -31,34 +31,20 @@ namespace AppGoalBit.ViewModel
         public NewHabitViewModel(GBDatabase _database)
         {
             Database = _database;
+            Habit = new();
         }
 
         [RelayCommand]
-        async Task UpdateNameAsync()
+        async Task ValidateHabitNameAsync()
         {
-            try
-            {
-                //Habit.Name = _e.Text;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Habits Error: Update Habit", $"Error updated habit name.", "OK");
-            }
+            // I can use this to check character length, string format etc later on.
+            // Make sure field is not blank etc or has at least ran once.
         }
 
         [RelayCommand]
-        async Task UpdateDescriptionAsync(string _desc)
+        async Task ValidateHabitDescriptionAsync()
         {
-            try
-            {
-                Habit.Description = _desc;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Habits Error: Update Habit", $"Error updated habit name.", "OK");
-            }
+            // Same as above validator function
         }
 
         [RelayCommand]

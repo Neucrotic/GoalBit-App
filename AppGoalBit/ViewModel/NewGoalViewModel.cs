@@ -12,9 +12,11 @@ using System.Threading.Tasks;
 
 namespace AppGoalBit.ViewModel
 {
+    [QueryProperty("Goal", "Goal")]
     public partial class NewGoalViewModel : ObservableObject
     {
-        Goal G = new();
+        [ObservableProperty]
+        public Goal goal;
 
         GBDatabase Database;
 
@@ -24,14 +26,26 @@ namespace AppGoalBit.ViewModel
         }
 
         [RelayCommand]
-        async Task NewGoalDoneAsync(Entry _e)
+        async Task ValidateGoalNameAsync()
+        {
+            // I can use this to check character length, string format etc later on.
+            // Make sure field is not blank etc or has at least ran once.
+        }
+
+        [RelayCommand]
+        async Task ValidateGoalDescriptionAsync()
+        {
+            // Same as above validator function
+        }
+
+        [RelayCommand]
+        async Task NewGoalDoneAsync()
         {
             try
             {
+                // Validate user input FIRST
                 // Do Database CRUD
-                G.Name = "Test";
-                G.Description = "a simple test.";
-                await Database.SaveGoalAsync(G);
+                await Database.SaveGoalAsync(Goal);
             }
             catch (Exception ex)
             {

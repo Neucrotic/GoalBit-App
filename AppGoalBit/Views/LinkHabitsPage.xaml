@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppGoalBit.Views.LinkHabitsPage"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:model="clr-namespace:AppGoalBit.Model"
+             xmlns:viewmodel="clr-namespace:AppGoalBit.ViewModel"
+             x:DataType="viewmodel:LinkHabitsViewModel"
+             Shell.BackgroundColor="{StaticResource Accent}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}">
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="{Binding Title}"
+                   TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
+                   FontSize="24"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Grid.Column="0"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <ContentPage.Behaviors>
+        <mct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout HorizontalOptions="Center"
+                         Spacing="8">
+        <HorizontalStackLayout Spacing="8"
+                               HorizontalOptions="Center">
+            <Image Source="{AppThemeBinding Light=goal.png, Dark=goal_dark.png}"
+                   HeightRequest="26"/>
+            <Label Text="{Binding Goal.Name}"
+                    FontSize="24"/>
+        </HorizontalStackLayout>
+
+        <CollectionView ItemsSource="{Binding Habits}"
+                    SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Habit">
+                    <VerticalStackLayout Padding="4">
+                        <HorizontalStackLayout>
+                            <Image Source="{AppThemeBinding Light=habits.png, Dark=habits_dark.png}"
+                                   WidthRequest="30"
+                                   HeightRequest="30"/>
+                            
+                            <Label Text="{Binding Name}"
+                                   FontSize="32"/>
+                            
+                            <Button Text="Link"
+                                    IsVisible="{Binding HasLink, Converter={StaticResource InvertedBoolConverter}}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:LinkHabitsViewModel}}, Path=FlipHasLinkCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            
+                            <Label Text="10"
+                                   IsVisible="{Binding HasLink}"/>
+                            
+                            <Stepper Increment="1"
+                                     IsVisible="{Binding HasLink}"/>
+                            
+                            <Button Text="Unlink"
+                                    IsVisible="{Binding HasLink}"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <Button Text="Done"/>
+        
+        <Button Text="Canel"/>
+    </VerticalStackLayout>
+</ContentPage>

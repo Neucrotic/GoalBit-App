@@ -1,16 +1,10 @@
-﻿using AndroidX.Core.Util;
-using AppGoalBit.Data;
+﻿using AppGoalBit.Data;
 using AppGoalBit.Model;
 using AppGoalBit.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppGoalBit.ViewModel
 {
@@ -66,24 +60,17 @@ namespace AppGoalBit.ViewModel
         }
 
         [RelayCommand]
-        async Task AddHabitAsync(Habit _habit)
+        async Task AddHabitAsync()
         {
             try
             {
-                if (_habit is null)
-                {
-                    _habit = new();
-                    _habit.Name = "Name";
-                    _habit.Description = "Describe your habit here.";
-                }
-                else
-                {
-                    return;
-                }
+                Habit habit = new();
+                habit.Name = "";
+                habit.Description = "";
 
                 await Shell.Current.GoToAsync($"{nameof(NewHabitPage)}", true, new Dictionary<string, object>
                                                                             {
-                                                                                { "Habit", _habit },
+                                                                                { "Habit", habit },
                                                                                 { "string",  "New Habit"},
                                                                                 { "bool", false}
                                                                             });

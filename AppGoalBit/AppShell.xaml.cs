@@ -15,7 +15,7 @@ namespace AppGoalBit
             Routing.RegisterRoute(nameof(GoalsPage), typeof(GoalsPage));
             Routing.RegisterRoute(nameof(NewGoalPage), typeof(NewGoalPage));
             Routing.RegisterRoute(nameof(DisplayGoalPage), typeof(DisplayGoalPage));
-            
+            Routing.RegisterRoute(nameof(LinkHabitsPage), typeof(LinkHabitsPage));
         }
     }
 }

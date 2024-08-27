@@ -1,5 +1,6 @@
 ﻿using AppGoalBit.Data;
 using AppGoalBit.Model;
+using AppGoalBit.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -17,15 +18,12 @@ namespace AppGoalBit.ViewModel
         Goal goal;
 
         [ObservableProperty]
-        bool viewOnly;
-
-        [ObservableProperty]
         string title;
 
         public DisplayGoalViewModel(GBDatabase _database)
         {
-            Title = "Goal Page";
             Database = _database;
+            Title = "Goal Page";
         }
 
         [RelayCommand]
@@ -34,6 +32,8 @@ namespace AppGoalBit.ViewModel
             try
             {
                 // Do database CRUD
+                Goal = await Database.GetGoalAsync(Goal.ID);
+
                 var habits = await Database.GetHabitListAsync();
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
@@ -47,6 +47,87 @@ namespace AppGoalBit.ViewModel
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
+            }
+        }
+
+        [RelayCommand]
+        async Task EditGoalAsync()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync($"{nameof(NewGoalPage)}", true, new Dictionary<string, object>
+                                                                                {
+                                                                                    {"Goal", Goal }
+                                                                                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+        }
+
+        [RelayCommand]
+        async Task GoToLinkHabitsAsync()
+        {
+            try
+            {
+                Goal g = new();
+                g = Goal;
+                await Shell.Current.GoToAsync($"{nameof(LinkHabitsPage)}", new Dictionary<string, object>
+                                                                                {
+                                                                                    {"Goal", g }
+                                                                                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+        }
+
+        [RelayCommand]
+        async Task ResetGoalAsync()
+        {
+            try
+            {
+                bool answer = await Shell.Current.DisplayAlert("Do you want to Reset this Goal?", "Reset will revert this goal to 0 progress and set all linked habits to incomplete for today.", "Yes", "No");
+                if (answer)
+                {
+                    // Reset the goal here.
+                    Goal.ProgressPercentage = 0;
+                    // Reset linked habits.
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                // Do database CRUD
+            }
+        }
+
+        [RelayCommand]
+        async Task DeleteGoalAsync()
+        {
+            bool answer = false;
+            try
+            {
+                answer = await Shell.Current.DisplayAlert("Delete Goal?", "Do you want to permanently delete this goal?", "Yes", "No");
+                if(answer)
+                {
+                    // Do Database CRUD
+                    await Database.DeleteGoalAsync(Goal);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (answer)
+                    await Shell.Current.GoToAsync("..");
             }
         }
     }

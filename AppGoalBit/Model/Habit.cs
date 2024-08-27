@@ -16,5 +16,6 @@ namespace AppGoalBit.Model
         public string Description { get; set; }
         public int Streak { get; set; }
         public bool Done { get; set; }
+        public bool HasLink { get; set; }
     }
 }

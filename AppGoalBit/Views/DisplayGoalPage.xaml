@@ -1,75 +1,116 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="AppGoalBit.Views.DisplayGoalPage"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:model="clr-namespace:AppGoalBit.Model"
              xmlns:viewmodel="clr-namespace:AppGoalBit.ViewModel"
              x:DataType="viewmodel:DisplayGoalViewModel"
              Shell.BackgroundColor="{StaticResource Accent}"
              BackgroundColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}">
     <Shell.TitleView>
-        <Label Text="{Binding Title}"
-               TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
-               FontSize="24"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"
-               Margin="0, 0, 70, 0"/>
+        <Grid>
+            <Label Text="{Binding Title}"
+                   TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
+                   FontSize="24"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Grid.Column="0"/>
+        </Grid>
     </Shell.TitleView>
-    
+
     <ContentPage.Behaviors>
-        <mct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+        <mct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing"/>
     </ContentPage.Behaviors>
 
-
-    <Frame Margin="12">
+    <Frame Margin="8">
         <Grid BindableLayout.ItemsSource="{Binding Goal}"
                   Padding="0"
                   ColumnDefinitions="40, *"
-                  RowDefinitions="50, *">
+                  RowDefinitions="50, 50, *">
+            <HorizontalStackLayout Grid.Column="1"
+                                   Grid.Row="0"
+                                   HorizontalOptions="End">
+                <Button ImageSource="{AppThemeBinding Light=edit.png, Dark=edit_dark.png}"
+                        BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        CornerRadius="20"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Command="{Binding EditGoalCommand}"/>
+
+                <Button ImageSource="{AppThemeBinding Light=link.png, Dark=link_dark.png}"
+                        BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        CornerRadius="20"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Command="{Binding GoToLinkHabitsCommand}"/>
+
+                <Button ImageSource="{AppThemeBinding Light=reset.png, Dark=resete_dark.png}"
+                        BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        CornerRadius="20"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Command="{Binding ResetGoalCommand}"/>
+
+                <Button ImageSource="{AppThemeBinding Light=delete.png, Dark=delete_dark.png}"
+                        BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        CornerRadius="20"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Command="{Binding DeleteGoalCommand}"/>
+            </HorizontalStackLayout>
+
             <Image Source="{AppThemeBinding Light=goal.png, Dark=goal.png}"
-                       Grid.Column="0"
-                       Grid.Row="0"/>
+                   Grid.Column="0"
+                   Grid.Row="1"/>
 
             <Label Text="{Binding Goal.Name}"
                    FontSize="16"
                    Grid.Column="1"
-                   Grid.Row="0"
+                   Grid.Row="1"
                    Margin="4"
                    FontAttributes="Bold"/>
 
             <VerticalStackLayout Grid.Column="1"
-                                 Grid.Row="1">
+                         Grid.Row="2">
                 <Label Text="{Binding Goal.Description}"
-                       Margin="4"/>
+                           Margin="4"/>
 
                 <ProgressBar Progress="{Binding Goal.ProgressPercentage}"
-                             ProgressColor="Red"
-                             Margin="0"/>
+                     ProgressColor="Red"
+                     Margin="0"/>
 
-                <CollectionView Margin="4"
-                                ItemsSource="{Binding Habits}"
-                                SelectionMode="None">
+                <CollectionView ItemsSource="{Binding Habits}"
+                                    SelectionMode="None"
+                                    Margin="0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Habit">
                             <Grid Padding="4">
                                 <Frame HeightRequest="75"
-                                       Padding="0">
+                                           Padding="0">
                                     <Grid Padding="0"
-                                          ColumnDefinitions="50, *">
+                                              ColumnDefinitions="50, *">
                                         <Image Aspect="AspectFill"
-                                               Source="{AppThemeBinding Light=habits.png, Dark=habits.png}"
-                                               WidthRequest="50"
-                                               HeightRequest="50"/>
+                                                   Source="{AppThemeBinding Light=habits.png, Dark=habits.png}"
+                                                   WidthRequest="50"
+                                                   HeightRequest="50"/>
                                         <VerticalStackLayout Grid.Column="1"
-                                                             Padding="10"
-                                                             VerticalOptions="Center">
+                                                                 Padding="10"
+                                                                 VerticalOptions="Center">
                                             <Label Text="{Binding Name}"
-                                                   TextColor="Black"
-                                                   TextTransform="Uppercase"
-                                                   FontAttributes="Bold"/>
+                                                       TextColor="Black"
+                                                       TextTransform="Uppercase"
+                                                       FontAttributes="Bold"/>
                                             <Label Text="{Binding Description}"
-                                                   TextColor="Black"/>
+                                                       TextColor="Black"/>
                                         </VerticalStackLayout>
                                     </Grid>
                                 </Frame>
