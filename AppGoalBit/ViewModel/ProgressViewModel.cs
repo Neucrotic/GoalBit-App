@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AppGoalBit.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,16 @@ namespace AppGoalBit.ViewModel
         }
 
         [RelayCommand]
-        async Task OpenAccountPageModalAsync()
+        async Task OpenSettingsAsync()
         {
             try
             {
-
+                await Shell.Current.GoToAsync($"{nameof(SettingsPage)}");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Progress Error: Button", $"Add habit button failed.", "OK");
+                await Shell.Current.DisplayAlert("Progress Error: Button", $"Failed to go to settings.", "OK");
             }
         }
     }

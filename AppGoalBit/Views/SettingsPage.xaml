@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppGoalBit.Views.SettingsPage"
+             xmlns:viewmodel="clr-namespace:AppGoalBit.ViewModel"
+             x:DataType="viewmodel:SettingsViewModel"
+             Title="Settings"
+             BackgroundColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}"
+             Shell.BackgroundColor="{StaticResource Accent}">
+    <Frame Margin="8"
+           BackgroundColor="LightGray">
+        <VerticalStackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center">
+            <HorizontalStackLayout WidthRequest="220">
+               <Switch x:Name="themeSwitch"
+                        HorizontalOptions="StartAndExpand"
+                        Toggled="themeSwitch_Toggled"/>
+
+                <Label Text="Toggle App Theme: Light"
+                       VerticalOptions="Center">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label"
+                                     Binding="{Binding Source={x:Reference themeSwitch}, Path=IsToggled}"
+                                     Value="true">
+                            <Setter Property="Text"
+                                    Value="Toggle App Theme: Dark"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </HorizontalStackLayout>
+            
+            <Button Text="Reset Database"
+                    Background="{StaticResource Accent}"
+                    Command="{Binding ResetDatabaseCommand}"
+                    WidthRequest="150"
+                    HorizontalOptions="Start"/>
+        </VerticalStackLayout>
+    </Frame>
+</ContentPage>

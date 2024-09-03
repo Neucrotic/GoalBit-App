@@ -65,7 +65,7 @@
                 VerticalOptions="End" 
                 HorizontalOptions="Center"
                 Margin="0, 120, 0, 0"
-                IsVisible="{Binding IsDeleteVisible}"
+                IsVisible="{Binding IsHabitNew}"
                 Command="{Binding DeleteHabitCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -53,7 +53,7 @@
                         </SwipeItems>
                     </SwipeView.RightItems>
                     <Grid Padding="4">
-                        <Frame HeightRequest="75"
+                        <Frame MinimumHeightRequest="50"
                                Padding="0">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding .}"

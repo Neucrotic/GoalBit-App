@@ -16,7 +16,6 @@ namespace AppGoalBit.Data
 
         public GBDatabase()
         {
-            List<int> ints = new();
         }
 
         async Task Init()
@@ -25,6 +24,7 @@ namespace AppGoalBit.Data
                 return;
 
             Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+
             // I think result is used as a debugging variable that is scrapped when we exit this code block.
             var result = await Database.CreateTableAsync<Goal>();
             result = await Database.CreateTableAsync<Habit>();
@@ -92,6 +92,57 @@ namespace AppGoalBit.Data
         {
             await Init();
             return await Database.DeleteAsync(_habit);
+        }
+
+        public async Task WipeDatabaseClean()
+        {
+            try
+            {
+                TableMapping habitTable = await Database.GetMappingAsync<Habit>();
+                TableMapping goalTable = await Database.GetMappingAsync<Goal>();
+
+                await Database.DeleteAllAsync(habitTable);
+                await Database.DeleteAllAsync(goalTable);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Database Error: Button", $"Failed to reset database.", "OK");
+            }
+            finally
+            {
+                await LoadGoalBitTutorialData();
+            }
+        }
+
+        private async Task LoadGoalBitTutorialData()
+        {
+            TableMapping habitTable = await Database.GetMappingAsync<Habit>();
+            TableMapping goalTable = await Database.GetMappingAsync<Goal>();
+
+            try
+            {
+                Habit habit = new();
+                Goal goal = new();
+
+                habit.Name = "Daily Habits";
+                habit.Description = "Habits reset daily and contribute progress towards any goals they are linked to.\n" +
+                    "Complete habits by tapping on them or edited by swiping left.\n" +
+                    "You can either delte or edit this habit when you are ready.";
+                habit.Streak = 10;
+
+                goal.Name = "Longterm Goals";
+                goal.Description = "Longterm goals can take time to achieve. Tap on a goal to view the habits it is linked to as well as edit or delete the goal." +
+                    "\nTry deleting this goal now.";
+
+                await SaveHabitAsync(habit);
+                await SaveGoalAsync(goal);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Database Error: Button", $"Failed to load tutorial habits and goals.", "OK");
+            }
         }
     }
 }

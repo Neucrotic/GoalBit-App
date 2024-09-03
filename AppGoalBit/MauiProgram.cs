@@ -30,6 +30,7 @@ namespace AppGoalBit
             builder.Services.AddSingleton<GoalsViewModel>();
             builder.Services.AddSingleton<HabitsViewModel>();
             builder.Services.AddSingleton<ProgressViewModel>();
+            builder.Services.AddSingleton<SettingsViewModel>();
 
             builder.Services.AddSingleton<NewGoalViewModel>();
             builder.Services.AddSingleton<DisplayGoalViewModel>();
@@ -40,6 +41,7 @@ namespace AppGoalBit
             builder.Services.AddSingleton<GoalsPage>();
             builder.Services.AddSingleton<HabitsPage>();
             builder.Services.AddSingleton<ProgressPage>();
+            builder.Services.AddSingleton<SettingsPage>();
 
             builder.Services.AddTransient<NewGoalPage>();
             builder.Services.AddTransient<LinkHabitsPage>();

@@ -29,9 +29,10 @@ namespace AppGoalBit.ViewModel
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     Habits.Clear();
-                    foreach (var g in habits)
+                    foreach (var h in habits)
                     {
-                        Habits.Add(g);
+                        if(!h.CompletedToday)
+                            Habits.Add(h);
                     }
                 });
             }
@@ -113,9 +114,14 @@ namespace AppGoalBit.ViewModel
                 answer = await Shell.Current.DisplayAlert("Confirm?", "Have you maintained this habit today?", "Yes", "No");
                 if (answer)
                 {
+                    Goal g = await Database.GetGoalAsync(_habit.GoalKey);
+
+                    g.ProgressPercentage += g.IncrementPercentageValue;
+                    _habit.CompletedToday = true;
+                    
                     // Do database CRUD
-                    _habit.Done = true;
                     await Database.SaveHabitAsync(_habit);
+                    await Database.SaveGoalAsync(g);
                 }
             }
             catch (Exception ex)

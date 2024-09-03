@@ -9,18 +9,29 @@
              Shell.BackgroundColor="{StaticResource Accent}"
              BackgroundColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}">
     <Shell.TitleView>
-        <Grid>
+        <HorizontalStackLayout Spacing="8">
             <Label Text="{Binding Title}"
                    TextColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDark}}"
                    FontSize="24"
                    VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   Grid.Column="0"/>
-        </Grid>
+                   HorizontalOptions="Center"/>
+            <Button Text="Done"
+                    Command="{Binding DoneLinkCommand}"
+                    WidthRequest="100"
+                    HorizontalOptions="End"
+                    Background="{StaticResource Accent}"/>
+
+            <Button Text="Canel"
+                    Command="{Binding CancelLinkCommand}"
+                    WidthRequest="100"
+                    HorizontalOptions="End"
+                    Background="{StaticResource Accent}"/>
+        </HorizontalStackLayout>
     </Shell.TitleView>
 
     <ContentPage.Behaviors>
         <mct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+        <mct:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Disappearing" />
     </ContentPage.Behaviors>
 
     <ContentPage.Resources>
@@ -29,54 +40,76 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <VerticalStackLayout HorizontalOptions="Center"
-                         Spacing="8">
-        <HorizontalStackLayout Spacing="8"
-                               HorizontalOptions="Center">
-            <Image Source="{AppThemeBinding Light=goal.png, Dark=goal_dark.png}"
-                   HeightRequest="26"/>
-            <Label Text="{Binding Goal.Name}"
-                    FontSize="24"/>
-        </HorizontalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout HorizontalOptions="Center"
+                     Spacing="8">
+            <HorizontalStackLayout Spacing="8"
+                           HorizontalOptions="Center">
+                <Image Source="{AppThemeBinding Light=goal.png, Dark=goal_dark.png}"
+               HeightRequest="26"/>
+                <Label Text="{Binding Goal.Name}"
+                FontSize="24"/>
+            </HorizontalStackLayout>
 
-        <CollectionView ItemsSource="{Binding Habits}"
-                    SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Habit">
-                    <VerticalStackLayout Padding="4">
-                        <HorizontalStackLayout>
-                            <Image Source="{AppThemeBinding Light=habits.png, Dark=habits_dark.png}"
-                                   WidthRequest="30"
-                                   HeightRequest="30"/>
-                            
-                            <Label Text="{Binding Name}"
-                                   FontSize="32"/>
-                            
-                            <Button Text="Link"
-                                    IsVisible="{Binding HasLink, Converter={StaticResource InvertedBoolConverter}}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:LinkHabitsViewModel}}, Path=FlipHasLinkCommand}"
-                                    CommandParameter="{Binding .}"/>
-                            
-                            <Label Text="10"
-                                   IsVisible="{Binding HasLink}"/>
-                            
-                            <Stepper Increment="1"
-                                     IsVisible="{Binding HasLink}"/>
-                            
-                            <Button Text="Unlink"
-                                    IsVisible="{Binding HasLink}"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:LinkHabitsViewModel}}, Path=FlipHasLinkCommand}"
-                                    CommandParameter="{Binding .}"/>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        
-        <Button Text="Done"
-                Command="{Binding DoneLinkCommand}"/>
-        
-        <Button Text="Canel"
-                Command="{Binding CancelLinkCommand}"/>
-    </VerticalStackLayout>
+            <Label Text="Link habits and set amount required for the goal to be complete. These values can be edited later."
+           HorizontalTextAlignment="Center"/>
+
+            <CollectionView ItemsSource="{Binding Habits}"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Habit">
+                        <Frame BackgroundColor="LightGrey"
+                               BorderColor="{StaticResource Accent}"
+                               Margin="4">
+                            <VerticalStackLayout Padding="4"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center">
+                                <HorizontalStackLayout>
+
+                                    <Image Source="{AppThemeBinding Light=habits.png, Dark=habits_dark.png}"
+                                           WidthRequest="30"
+                                           HeightRequest="30"/>
+
+                                    <Label Text="{Binding Source={x:Reference HabitCountStepper}, Path=Value, StringFormat='{0} days: '}"
+                                           IsVisible="{Binding HasLink}"
+                                           FontSize="30"
+                                           Margin="2"/>
+
+                                    <Label Text="{Binding Name}"
+                                           FontSize="32"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout>
+                                    <Button Text="Unlink"
+                                            IsVisible="{Binding HasLink}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:LinkHabitsViewModel}}, Path=FlipHasLinkCommand}"
+                                            CommandParameter="{Binding .}"/>
+
+                                    <Stepper x:Name="HabitCountStepper"
+                                             Value="{Binding CountReqToCompelte}"
+                                             Minimum="0"
+                                             Maximum="999"
+                                             Increment="1"
+                                             IsVisible="{Binding HasLink}"/>
+
+                                    <Button Text="Link"
+                                            IsVisible="{Binding HasLink, Converter={StaticResource InvertedBoolConverter}}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:LinkHabitsViewModel}}, Path=FlipHasLinkCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Add Another Habit"
+                    WidthRequest="200"
+                    Margin="8"
+                    Background="{StaticResource Accent}"
+                    BorderColor="LightGrey"
+                    BorderWidth="2"
+                    Command="{Binding AddLinkedHabitCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

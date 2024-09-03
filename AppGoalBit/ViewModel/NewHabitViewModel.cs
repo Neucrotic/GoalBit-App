@@ -14,7 +14,7 @@ namespace AppGoalBit.ViewModel
 {
     [QueryProperty("Habit", "Habit")]
     [QueryProperty("Title", "string")]
-    [QueryProperty("IsDeleteVisible", "bool")]
+    [QueryProperty("IsHabitNew", "bool")]
     public partial class NewHabitViewModel : ObservableObject
     {
         [ObservableProperty]
@@ -24,14 +24,19 @@ namespace AppGoalBit.ViewModel
         string title;
 
         [ObservableProperty]
-        bool isDeleteVisible;
+        bool isHabitNew;
 
         GBDatabase Database;
 
         public NewHabitViewModel(GBDatabase _database)
         {
             Database = _database;
+
             Habit = new();
+            Habit.Streak = 0;
+            Habit.CompletedToday = false;
+            Habit.CountReqToCompelte = 0;
+
         }
 
         [RelayCommand]

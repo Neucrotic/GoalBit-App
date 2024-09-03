@@ -4,6 +4,7 @@
              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="AppGoalBit.Views.NewGoalPage"
              xmlns:viewmodel="clr-namespace:AppGoalBit.ViewModel"
+             xmlns:model="clr-namespace:AppGoalBit.Model"
              x:DataType="viewmodel:NewGoalViewModel"
              Shell.BackgroundColor="{StaticResource Accent}">
     <Shell.TitleView>
@@ -23,6 +24,7 @@
                 <mct:EventToCommandBehavior EventName="Completed" Command="{Binding ValidateGoalNameCommand}"/>
             </Entry.Behaviors>
         </Entry>
+
         <Entry Text="{Binding Goal.Description}"
             Placeholder="Decribe your new goal."
                ClearButtonVisibility="WhileEditing">
@@ -30,6 +32,16 @@
                 <mct:EventToCommandBehavior EventName="Completed" Command="{Binding ValidateGoalDescriptionCommand}"/>
             </Entry.Behaviors>
         </Entry>
+
+        <Button ImageSource="{AppThemeBinding Light=link.png, Dark=link_dark.png}"
+                BackgroundColor="{StaticResource Accent}"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                CornerRadius="20"
+                WidthRequest="40"
+                HeightRequest="40"
+                Command="{Binding GoToLinkHabitsCommand}"/>
+
         <HorizontalStackLayout HorizontalOptions="Center">
             <Button Text="Create"
                     HorizontalOptions="Center"

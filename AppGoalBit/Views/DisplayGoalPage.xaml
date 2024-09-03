@@ -85,8 +85,8 @@
                            Margin="4"/>
 
                 <ProgressBar Progress="{Binding Goal.ProgressPercentage}"
-                     ProgressColor="Red"
-                     Margin="0"/>
+                             ProgressColor="{StaticResource Accent}"
+                             Margin="0"/>
 
                 <CollectionView ItemsSource="{Binding Habits}"
                                     SelectionMode="None"

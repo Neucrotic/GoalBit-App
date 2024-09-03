@@ -14,5 +14,6 @@ namespace AppGoalBit.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public float ProgressPercentage { get; set; }//This must be between 0 and 1
+        public float IncrementPercentageValue { get; set; } // What percent is completing each habit worth.
     }
 }

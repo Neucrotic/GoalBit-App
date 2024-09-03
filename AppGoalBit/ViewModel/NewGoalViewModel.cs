@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,11 @@ namespace AppGoalBit.ViewModel
     [QueryProperty("Goal", "Goal")]
     public partial class NewGoalViewModel : ObservableObject
     {
+        public ObservableCollection<Habit> Habits { get; } = new();
+        GBDatabase Database;
+
         [ObservableProperty]
         public Goal goal;
-
-        GBDatabase Database;
 
         public NewGoalViewModel(GBDatabase _database)
         {
@@ -36,6 +38,22 @@ namespace AppGoalBit.ViewModel
         async Task ValidateGoalDescriptionAsync()
         {
             // Same as above validator function
+        }
+
+        [RelayCommand]
+        async Task GoToLinkHabitsAsync()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync($"{nameof(LinkHabitsPage)}", new Dictionary<string, object>
+                                                                                {
+                                                                                    {"Goal", Goal }
+                                                                                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
         }
 
         [RelayCommand]

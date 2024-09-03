@@ -121,6 +121,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:AppGoalBit.ViewModel.LinkHabitsViewModel.Goal">
             <inheritdoc cref="F:AppGoalBit.ViewModel.LinkHabitsViewModel.goal"/>
@@ -152,7 +153,14 @@
         <member name="P:AppGoalBit.ViewModel.LinkHabitsViewModel.CancelLinkCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.LinkHabitsViewModel.CancelLinkAsync"/>.</summary>
         </member>
+        <member name="F:AppGoalBit.ViewModel.LinkHabitsViewModel.addLinkedHabitCommand">
+            <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.LinkHabitsViewModel.AddLinkedHabitCommand"/>.</summary>
+        </member>
+        <member name="P:AppGoalBit.ViewModel.LinkHabitsViewModel.AddLinkedHabitCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.LinkHabitsViewModel.AddLinkedHabitAsync"/>.</summary>
+        </member>
         <member name="T:AppGoalBit.ViewModel.NewGoalViewModel">
+            <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
@@ -173,6 +181,12 @@
         </member>
         <member name="P:AppGoalBit.ViewModel.NewGoalViewModel.ValidateGoalDescriptionCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.NewGoalViewModel.ValidateGoalDescriptionAsync"/>.</summary>
+        </member>
+        <member name="F:AppGoalBit.ViewModel.NewGoalViewModel.goToLinkHabitsCommand">
+            <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.NewGoalViewModel.GoToLinkHabitsCommand"/>.</summary>
+        </member>
+        <member name="P:AppGoalBit.ViewModel.NewGoalViewModel.GoToLinkHabitsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.NewGoalViewModel.GoToLinkHabitsAsync"/>.</summary>
         </member>
         <member name="F:AppGoalBit.ViewModel.NewGoalViewModel.newGoalDoneCommand">
             <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.NewGoalViewModel.NewGoalDoneCommand"/>.</summary>
@@ -199,8 +213,8 @@
         <member name="P:AppGoalBit.ViewModel.NewHabitViewModel.Title">
             <inheritdoc cref="F:AppGoalBit.ViewModel.NewHabitViewModel.title"/>
         </member>
-        <member name="P:AppGoalBit.ViewModel.NewHabitViewModel.IsDeleteVisible">
-            <inheritdoc cref="F:AppGoalBit.ViewModel.NewHabitViewModel.isDeleteVisible"/>
+        <member name="P:AppGoalBit.ViewModel.NewHabitViewModel.IsHabitNew">
+            <inheritdoc cref="F:AppGoalBit.ViewModel.NewHabitViewModel.isHabitNew"/>
         </member>
         <member name="F:AppGoalBit.ViewModel.NewHabitViewModel.validateHabitNameCommand">
             <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.NewHabitViewModel.ValidateHabitNameCommand"/>.</summary>
@@ -229,11 +243,20 @@
         <member name="T:AppGoalBit.ViewModel.ProgressViewModel">
             <inheritdoc/>
         </member>
-        <member name="F:AppGoalBit.ViewModel.ProgressViewModel.openAccountPageModalCommand">
-            <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.ProgressViewModel.OpenAccountPageModalCommand"/>.</summary>
+        <member name="F:AppGoalBit.ViewModel.ProgressViewModel.openSettingsCommand">
+            <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.ProgressViewModel.OpenSettingsCommand"/>.</summary>
         </member>
-        <member name="P:AppGoalBit.ViewModel.ProgressViewModel.OpenAccountPageModalCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.ProgressViewModel.OpenAccountPageModalAsync"/>.</summary>
+        <member name="P:AppGoalBit.ViewModel.ProgressViewModel.OpenSettingsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.ProgressViewModel.OpenSettingsAsync"/>.</summary>
+        </member>
+        <member name="T:AppGoalBit.ViewModel.SettingsViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:AppGoalBit.ViewModel.SettingsViewModel.resetDatabaseCommand">
+            <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.SettingsViewModel.ResetDatabaseCommand"/>.</summary>
+        </member>
+        <member name="P:AppGoalBit.ViewModel.SettingsViewModel.ResetDatabaseCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.SettingsViewModel.ResetDatabaseAsync"/>.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
             <summary>
@@ -250,8 +273,8 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Habit">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Habit" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsDeleteVisible">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsDeleteVisible" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsHabitNew">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsHabitNew" generated properties.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
@@ -268,8 +291,8 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Habit">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Habit" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsDeleteVisible">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsDeleteVisible" generated properties.</summary>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsHabitNew">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsHabitNew" generated properties.</summary>
         </member>
     </members>
 </doc>

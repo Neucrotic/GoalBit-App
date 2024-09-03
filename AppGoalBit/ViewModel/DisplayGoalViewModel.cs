@@ -31,16 +31,14 @@ namespace AppGoalBit.ViewModel
         {
             try
             {
-                // Do database CRUD
-                Goal = await Database.GetGoalAsync(Goal.ID);
-
                 var habits = await Database.GetHabitListAsync();
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     Habits.Clear();
                     foreach (var h in habits)
                     {
-                        Habits.Add(h);
+                        if (h.GoalKey == Goal.ID)
+                            Habits.Add(h);
                     }
                 });
             }
@@ -94,7 +92,9 @@ namespace AppGoalBit.ViewModel
                 {
                     // Reset the goal here.
                     Goal.ProgressPercentage = 0;
-                    // Reset linked habits.
+
+                    // Do database CRUD
+                    await Database.SaveGoalAsync(Goal);
                 }
             }
             catch (Exception ex)
@@ -103,7 +103,7 @@ namespace AppGoalBit.ViewModel
             }
             finally
             {
-                // Do database CRUD
+                await Shell.Current.GoToAsync("..");
             }
         }
 
