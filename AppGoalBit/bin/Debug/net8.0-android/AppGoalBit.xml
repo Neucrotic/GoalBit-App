@@ -119,6 +119,8 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:AppGoalBit.ViewModel.LinkHabitsViewModel.Goal">
             <inheritdoc cref="F:AppGoalBit.ViewModel.LinkHabitsViewModel.goal"/>
@@ -137,6 +139,18 @@
         </member>
         <member name="P:AppGoalBit.ViewModel.LinkHabitsViewModel.FlipHasLinkCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.LinkHabitsViewModel.FlipHasLinkAsync(AppGoalBit.Model.Habit)"/>.</summary>
+        </member>
+        <member name="F:AppGoalBit.ViewModel.LinkHabitsViewModel.doneLinkCommand">
+            <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.LinkHabitsViewModel.DoneLinkCommand"/>.</summary>
+        </member>
+        <member name="P:AppGoalBit.ViewModel.LinkHabitsViewModel.DoneLinkCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.LinkHabitsViewModel.DoneLinkAsync"/>.</summary>
+        </member>
+        <member name="F:AppGoalBit.ViewModel.LinkHabitsViewModel.cancelLinkCommand">
+            <summary>The backing field for <see cref="P:AppGoalBit.ViewModel.LinkHabitsViewModel.CancelLinkCommand"/>.</summary>
+        </member>
+        <member name="P:AppGoalBit.ViewModel.LinkHabitsViewModel.CancelLinkCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AppGoalBit.ViewModel.LinkHabitsViewModel.CancelLinkAsync"/>.</summary>
         </member>
         <member name="T:AppGoalBit.ViewModel.NewGoalViewModel">
             <inheritdoc/>

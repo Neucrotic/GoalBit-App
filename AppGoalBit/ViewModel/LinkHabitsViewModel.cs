@@ -11,6 +11,7 @@ namespace AppGoalBit.ViewModel
     public partial class LinkHabitsViewModel : ObservableObject
     {
         public ObservableCollection<Habit> Habits { get; } = new();
+        public ObservableCollection<Habit> UnlinkedHabits { get; } = new();
         GBDatabase Database;
 
         [ObservableProperty]
@@ -33,19 +34,12 @@ namespace AppGoalBit.ViewModel
                 // Do database CRUD
                 Goal = await Database.GetGoalAsync(Goal.ID);
 
-                var habits = await Database.GetHabitListAsync();
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    Habits.Clear();
-                    foreach (var h in habits)
-                    {
-                        Habits.Add(h);
-                    }
-                });
+                GetUpdateFromDatabase();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
+                await Shell.Current.DisplayAlert("Link Page Error", $"Failed to load initial page data.", "OK");
             }
         }
 
@@ -56,7 +50,56 @@ namespace AppGoalBit.ViewModel
                 _habit.HasLink = false;
             else
                 _habit.HasLink = true;
+
             await Database.SaveHabitAsync(_habit);
+            GetUpdateFromDatabase();
+        }
+
+        [RelayCommand]
+        async Task DoneLinkAsync()
+        {
+            try
+            {
+                // Do CRUD Updates
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                await Shell.Current.DisplayAlert("Link Page Error", $"Failed to save linking data.", "OK");
+            }
+            finally
+            {
+                // Pop this page to return.
+                await Shell.Current.GoToAsync("..");
+            }
+        }
+
+        [RelayCommand]
+        async Task CancelLinkAsync()
+        {
+            try
+            {
+                // Pop this page without doing any saving.
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                await Shell.Current.DisplayAlert("Link Page Error", $"Failed to pop view from the stack.", "OK");
+            }
+        }
+
+        async void GetUpdateFromDatabase()
+        {
+            var habits = await Database.GetHabitListAsync();
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Habits.Clear();
+                foreach (var h in habits)
+                {
+                    Habits.Add(h);
+                }
+            });
         }
     }
 }

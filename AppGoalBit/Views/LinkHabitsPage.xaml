@@ -64,15 +64,19 @@
                                      IsVisible="{Binding HasLink}"/>
                             
                             <Button Text="Unlink"
-                                    IsVisible="{Binding HasLink}"/>
+                                    IsVisible="{Binding HasLink}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:LinkHabitsViewModel}}, Path=FlipHasLinkCommand}"
+                                    CommandParameter="{Binding .}"/>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         
-        <Button Text="Done"/>
+        <Button Text="Done"
+                Command="{Binding DoneLinkCommand}"/>
         
-        <Button Text="Canel"/>
+        <Button Text="Canel"
+                Command="{Binding CancelLinkCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
